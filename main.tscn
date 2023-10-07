@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://uaj6ihcra2nx"]
+
+[ext_resource type="Texture2D" uid="uid://ddeqrtwwsed2n" path="res://textures/boy.png" id="1_j8qqb"]
+[ext_resource type="Script" path="res://player.gd" id="2_pivcf"]
+[ext_resource type="PackedScene" uid="uid://c8s1vco78i5in" path="res://dog.tscn" id="2_pt0dp"]
+[ext_resource type="Script" path="res://UI.gd" id="4_dodg7"]
+
+[node name="Main" type="Node2D"]
+
+[node name="White Dog" parent="." instance=ExtResource("2_pt0dp")]
+position = Vector2(94, 75)
+
+[node name="Blue Dog" parent="." instance=ExtResource("2_pt0dp")]
+position = Vector2(166, 410)
+color = Color(0.254902, 0.513726, 0.756863, 1)
+
+[node name="Green Dog" parent="." instance=ExtResource("2_pt0dp")]
+position = Vector2(897, 165)
+color = Color(0.0862745, 0.505882, 0.235294, 1)
+
+[node name="Yellow Dog" parent="." instance=ExtResource("2_pt0dp")]
+position = Vector2(913, 467)
+color = Color(1, 1, 0, 1)
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(578, 172)
+scale = Vector2(0.229907, 0.254422)
+texture = ExtResource("1_j8qqb")
+offset = Vector2(0, -150)
+script = ExtResource("2_pivcf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_dodg7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.5
+offset_top = -66.0
+offset_right = 89.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 14
+
+[node name="Button Call White" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "White, Come Here!"
+
+[node name="Button Call All" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Everyone, Come Here!"
+
+[node name="Shout Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_right = 41.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "EVERYONE !!!"
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Button Call White" to="Player" method="_on_button_call_white_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Button Call All" to="Player" method="_on_button_call_all_pressed"]

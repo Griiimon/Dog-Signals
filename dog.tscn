@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8s1vco78i5in"]
+
+[ext_resource type="Script" path="res://dog.gd" id="1_jdatg"]
+[ext_resource type="Texture2D" uid="uid://cffu3ekmctbm0" path="res://textures/dog base.png" id="2_qcybk"]
+[ext_resource type="Texture2D" uid="uid://t0qfae1kfqt2" path="res://textures/dog features.png" id="3_q6nka"]
+
+[node name="Dog" type="Node2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_jdatg")
+color = Color(1, 1, 1, 1)
+
+[node name="Sprite Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_qcybk")
+
+[node name="Sprite Features" type="Sprite2D" parent="."]
+texture = ExtResource("3_q6nka")
